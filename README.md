@@ -58,19 +58,24 @@ Required IAM permissions
 
 **Community contribution much appreciated on this!**
 
-We have been using the following IAM policys to be able to list and associate Elastic IPs. This can probably be narrowed down abit. It allows EC2 read-only (from the IAM wizard) and `ec2:AssociateAddress` permissions:
+We have been using the following IAM policy to be able to list and associate Elastic IPs. This can probably be narrowed down abit. It allows EC2 read-only (from the IAM wizard) and `ec2:AssociateAddress` permissions:
 
     {
-      "Statement": [
-        {
-          "Effect": "Allow",
-          "Action": [
-            "ec2:AssociateAddress",
-            "ec2:Describe*"
-          ],
-          "Resource": "*"
-        }
-      ]
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "Stmt1483425381000",
+                "Effect": "Allow",
+                "Action": [
+                    "ec2:AssociateAddress",
+                    "ec2:DescribeAddresses",
+                    "ec2:DescribeInstances"
+                ],
+                "Resource": [
+                    "*"
+                ]
+            }
+        ]
     }
 
 License
